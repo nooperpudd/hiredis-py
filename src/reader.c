@@ -284,7 +284,7 @@ static PyObject *Reader_gets(hiredis_ReaderObject *self) {
     char *errstr;
 
     if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
-        errstr = redisReplyReaderGetError(self->reader);
+        errstr = redisReaderGetError(self->reader);
         /* protocolErrorClass might be a callable. call it, then use it's type */
         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
         obj = PyObject_Type(err);
