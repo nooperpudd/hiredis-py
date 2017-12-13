@@ -269,7 +269,7 @@ static PyObject *Reader_feed(hiredis_ReaderObject *self, PyObject *args) {
       goto error;
     }
 
-    redisReplyReaderFeed(self->reader, (char *)buf.buf + off, len);
+    redisReaderFeed(self->reader, (char *)buf.buf + off, len);
     PyBuffer_Release(&buf);
     Py_RETURN_NONE;
 
@@ -283,7 +283,7 @@ static PyObject *Reader_gets(hiredis_ReaderObject *self) {
     PyObject *err;
     char *errstr;
 
-    if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
+    if (redisReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
         errstr = redisReaderGetError(self->reader);
         /* protocolErrorClass might be a callable. call it, then use it's type */
         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
