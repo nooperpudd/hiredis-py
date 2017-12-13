@@ -159,7 +159,7 @@ redisReplyObjectFunctions hiredis_ObjectFunctions = {
 };
 
 static void Reader_dealloc(hiredis_ReaderObject *self) {
-    redisReplyReaderFree(self->reader);
+    redisReaderFree(self->reader);
     if (self->encoding)
         free(self->encoding);
     Py_XDECREF(self->protocolErrorClass);
