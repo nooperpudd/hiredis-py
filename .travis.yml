@@ -7,12 +7,11 @@ python:
 
 branches:
   only:
-    - staging
-    - trying
     - master
 
 install:
-  - pip install --upgrade setuptools
+  - pip install --upgrade setuptools pip
   - python setup.py build
 
 script: "python test.py"
+
