@@ -159,6 +159,7 @@ redisReplyObjectFunctions hiredis_ObjectFunctions = {
 };
 
 static void Reader_dealloc(hiredis_ReaderObject *self) {
+
     redisReaderFree(self->reader);
     if (self->encoding)
         free(self->encoding);

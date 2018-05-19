@@ -1,7 +1,7 @@
 # https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
 
-image:
-- Visual Studio 2015
+#image:
+#- Visual Studio 2015
 
 
 environment:
@@ -12,6 +12,7 @@ environment:
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
 
   matrix:
+
 #    - PYTHON: "C:\\Python27"
 #      PYTHON_VERSION: "2.7.12"
 #      PYTHON_ARCH: "32"

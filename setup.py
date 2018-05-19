@@ -1,25 +1,21 @@
 #!/usr/bin/env python
-
-
 import glob
 
 from setuptools import setup, Extension
-from setuptools.command import install_lib as _install_lib
+from setuptools.command import install_lib
 
-
-
-# Patch "install_lib" command to run build_clib before build_ext
-# to properly work with easy_install.
-# See: http://bugs.python.org/issue5243
-class install_lib(_install_lib.install_lib):
-    def build(self):
-        if not self.skip_build:
-            if self.distribution.has_pure_modules():
-                self.run_command('build_py')
-                if self.distribution.has_c_libraries():
-                    self.run_command('build_clib')
-                if self.distribution.has_ext_modules():
-                    self.run_command('build_ext')
+# # Patch "install_lib" command to run build_clib before build_ext
+# # to properly work with easy_install.
+# # See: http://bugs.python.org/issue5243
+# class install_lib(_install_lib.install_lib):
+#     def build(self):
+#         if not self.skip_build:
+#             if self.distribution.has_pure_modules():
+#                 self.run_command('build_py')
+#                 if self.distribution.has_c_libraries():
+#                     self.run_command('build_clib')
+#                 if self.distribution.has_ext_modules():
+#                     self.run_command('build_ext')
 
 
 # To link the extension with the C library, distutils passes the "-lLIBRARY"
@@ -70,7 +66,6 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
