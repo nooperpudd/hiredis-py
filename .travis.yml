@@ -6,7 +6,11 @@ python:
   - "3.5"
   - "3.6"
 
+
 install:
+  - pip install --upgrade setuptools pip
+
   - python setup.py build
 
 script: "python test.py"
+
