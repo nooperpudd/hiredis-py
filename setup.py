@@ -35,7 +35,7 @@ class install_lib(_install_lib.install_lib):
 #
 # Also see: https://github.com/pietern/hiredis-py/issues/15
 lib = ("hiredis_for_hiredis_py", {
-    "sources": ["vendor/hiredis/%s.c" % src for src in ("read", "sds")]})
+    "sources": ["vendor/hiredis/%s.c" % src for src in ("sds", "read")]})
 
 ext = Extension("hiredis.hiredis",
                 sources=sorted(glob.glob("src/*.c")),
